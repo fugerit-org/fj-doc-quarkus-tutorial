@@ -25,8 +25,8 @@ class DocResourceTest {
     }
 
     @Test
-    void testPdf() {
-        given().when().get("/doc/example.pdf").then().statusCode(200);
+    void testXlsx() {
+        given().when().get("/doc/example.xlsx").then().statusCode(200);
     }
 
 }

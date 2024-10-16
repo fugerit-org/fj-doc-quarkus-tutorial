@@ -8,7 +8,7 @@ This project was created using the following [command](https://venusdocs.fugerit
 mvn org.fugerit.java:fj-doc-maven-plugin:init \
 -DgroupId=org.fugerit.java.demo \
 -DartifactId=fj-doc-quarkus-tutorial \
--Dextensions=base,freemarker,mod-fop \
+-Dextensions=base,freemarker,mod-poi \
 -Dflavour=quarkus-3
 ```
 
@@ -32,7 +32,7 @@ Test available paths (for instance : [/doc/example.md](http://localhost:8080/doc
 
 NOTE:
 - Powered by Quarkus 3.15.1
-- Using Fugerit Venus Doc 8.9.3 (extensions : base,freemarker,mod-fop)
+- Using Fugerit Venus Doc 8.9.3 (extensions : base,freemarker,mod-poi)
 
 ## Overview
 

@@ -76,7 +76,7 @@
     </dependency>
     <dependency>
       <groupId>org.fugerit.java</groupId>
-      <artifactId>fj-doc-mod-fop</artifactId>
+      <artifactId>fj-doc-mod-poi</artifactId>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

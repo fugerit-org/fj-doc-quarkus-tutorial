@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- generated from template 'fm-doc-process-config-template.ftl' on 2024-10-16T23:01:52.437+02:00 -->
+<!-- generated from template 'fm-doc-process-config-template.ftl' on 2024-10-16T23:06:53.081+02:00 -->
 <freemarker-doc-process-config
         xmlns="https://freemarkerdocprocess.fugerit.org"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -24,12 +24,10 @@
         <docHandler id="html-fragment-fm" info="fhtml" type="org.fugerit.java.doc.freemarker.html.FreeMarkerHtmlFragmentTypeHandlerEscapeUTF8" />
         <!-- type handler for asciidoc using freemarker -->
         <docHandler id="asciidoc-fm" info="adoc" type="org.fugerit.java.doc.freemarker.asciidoc.FreeMarkerAsciidocTypeHandlerUTF8" />
-        <!-- Type handler generating xls:fo style sheet -->
-        <docHandler id="fo-fop" info="fo" type="org.fugerit.java.doc.mod.fop.FreeMarkerFopTypeHandlerUTF8" />
-        <!-- Type handler generating pdf -->
-        <docHandler id="pdf-fop" info="pdf" type="org.fugerit.java.doc.mod.fop.PdfFopTypeHandler">
-            <docHandlerCustomConfig charset="UTF-8" fop-config-mode="classloader" fop-config-classloader-path="fj-doc-quarkus-tutorial/fop-config.xml" fop-suppress-events="1"/>
-        </docHandler>
+        <!-- Type handler generating xls -->
+        <docHandler id="xls-poi" info="xls" type="org.fugerit.java.doc.mod.poi.XlsPoiTypeHandler" />
+        <!-- Type handler generating xlsx -->
+        <docHandler id="xlsx-poi" info="xlsx" type="org.fugerit.java.doc.mod.poi.XlsxPoiTypeHandler" />
     </docHandlerConfig>
 
     <docChain id="shared">
