@@ -87,6 +87,16 @@ public class DocResource {
         return processDocument(DocConfig.TYPE_PDF);
     }
 
-
+    @APIResponse(responseCode = "200", description = "The PDF document content" )
+    @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
+    @Tags( { @Tag( name = "document" ), @Tag( name = "pdf" ) } )
+    @Operation( operationId = "PDFA1bExample", summary = "Example PDF/A-1b generation",
+            description =  "Generates an example PDF document using Fugerit Venus Doc handler" )
+    @GET
+    @Produces("application/pdf")
+    @Path("/pdfa1b/example.pdf")
+    public byte[] pdfA1bExample() {
+        return processDocument("PDF/A-1b");
+    }
 
 }
