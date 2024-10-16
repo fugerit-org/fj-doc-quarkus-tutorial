@@ -1,4 +1,4 @@
-// generated from template 'DocHelperTest.ftl' on 2024-10-16T23:06:53.091+02:00
+// generated from template 'DocHelperTest.ftl' on 2024-10-16T23:09:45.361+02:00
 package test.org.fugerit.java.demo.fjdocquarkustutorial;
 
 import org.fugerit.java.demo.fjdocquarkustutorial.DocHelper;

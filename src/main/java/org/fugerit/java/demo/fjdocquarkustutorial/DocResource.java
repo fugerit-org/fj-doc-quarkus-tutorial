@@ -76,17 +76,17 @@ public class DocResource {
     }
 
 
-    @APIResponse(responseCode = "200", description = "The Excel document content" )
-    @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "excel" ) } )
-    @Operation( operationId = "ExcelExample", summary = "Example Excel generation",
-        description =  "Generates an example Excel document using Fugerit Venus Doc handler" )
-    @GET
-    @Produces("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-    @Path("/example.xlsx")
-    public byte[] excelExample() {
-        return processDocument(DocConfig.TYPE_XLSX);
-    }
 
+    @APIResponse(responseCode = "200", description = "The CSV document content" )
+    @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
+    @Tags( { @Tag( name = "document" ), @Tag( name = "csv" ) } )
+    @Operation( operationId = "CSVExample", summary = "Example CSV generation",
+        description =  "Generates an example CSV document using Fugerit Venus Doc handler" )
+    @GET
+    @Produces("text/csv")
+    @Path("/example.csv")
+    public byte[] csvExample() {
+        return processDocument(DocConfig.TYPE_CSV);
+    }
 
 }

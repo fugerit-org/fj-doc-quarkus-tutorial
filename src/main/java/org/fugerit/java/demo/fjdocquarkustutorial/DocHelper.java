@@ -4,7 +4,7 @@ import org.fugerit.java.doc.freemarker.process.FreemarkerDocProcessConfig;
 import org.fugerit.java.doc.freemarker.process.FreemarkerDocProcessConfigFacade;
 
 /**
- * DocHelper, version : auto generated on 2024-10-16 23:06:53.09
+ * DocHelper, version : auto generated on 2024-10-16 23:09:45.36
  */
 public class DocHelper {
 

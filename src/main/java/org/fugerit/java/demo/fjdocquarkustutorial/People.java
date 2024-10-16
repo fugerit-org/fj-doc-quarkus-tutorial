@@ -1,4 +1,4 @@
-// generated from template 'People.ftl' on 2024-10-16T23:06:53.093+02:00
+// generated from template 'People.ftl' on 2024-10-16T23:09:45.364+02:00
 package org.fugerit.java.demo.fjdocquarkustutorial;
 
 import lombok.Getter;
