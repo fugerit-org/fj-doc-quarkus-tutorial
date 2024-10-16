@@ -42,6 +42,10 @@
         <docHandler id="openpdf-html" info="openpdf-html" type="org.fugerit.java.doc.mod.openpdf.ext.HtmlTypeHandler"/>
         <!-- OpenPDF type hanlder  -->
         <docHandler id="openrtf" info="openrtf" type="org.fugerit.java.doc.mod.openrtf.ext.RtfTypeHandler"/>
+        <!-- Type handler for PDF/A format -->
+        <docHandler id="PDF/A-1b" info="pdf" type="org.fugerit.java.doc.mod.fop.PdfFopTypeHandler">
+            <docHandlerCustomConfig charset="UTF-8" fop-config-mode="classloader" fop-config-classloader-path="fop-config-pdfa.xml" pdf-a-mode="PDF/A-1b"/>
+        </docHandler>
     </docHandlerConfig>
 
     <docChain id="shared">

@@ -23,19 +23,20 @@
         <info name="margins">10;10;10;30</info>
         <!-- documenta meta information -->
         <info name="doc-title">${docTitle!defaultTitle}</info>
-        <info name="doc-subject">fj doc venus sample source FreeMarker Template XML - ftlx</info>
         <info name="doc-author">fugerit79</info>
         <info name="doc-language">en</info>
         <!-- property specific for xls/xlsx -->
         <info name="excel-table-id">data-table=print</info>
         <!-- property specific for csv -->
         <info name="csv-table-id">data-table</info>
+        <!-- Default font added for pdf a generation -->
+        <info name="default-font-name">TitilliumWeb</info>
         <footer-ext>
             <para align="right">${r"${currentPage}"} / ${r"${pageCount}"}</para>
         </footer-ext>
     </metadata>
     <body>
-    <para>${docTitle!defaultTitle}</para>
+    <h head-level="1">${docTitle!defaultTitle}</h>
     <table columns="3" colwidths="30;30;40"  width="100" id="data-table" padding="2">
         <row header="true">
             <cell align="center"><para>Name</para></cell>
