@@ -37,7 +37,7 @@ class DocResourceTest {
     }
     @Test
     void testOpenPDF() {
-        given().when().get("/doc/openpdf/example.pdf").then().statusCode(200);
+        given().when().get("/doc/openpdf/example.pdf?sourceType=3").then().statusCode(200);
     }
     @Test
     void testOpenPDFHTML() {

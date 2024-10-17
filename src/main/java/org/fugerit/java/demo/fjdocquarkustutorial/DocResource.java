@@ -21,6 +21,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tags;
 @Path("/doc")
 @Tag( name = "XML SOURCE (DEFAULT)", description = "Add query param sourceType=1 or no value to use the XML source example")
 @Tag( name = "JSON SOURCE", description = "Add query param sourceType=2 to use the JSON source example")
+@Tag( name = "YAML SOURCE", description = "Add query param sourceType=3 to use the YAML source example")
 public class DocResource {
 
     byte[] processDocument(String handlerId, Integer sourceType) {
@@ -35,6 +36,8 @@ public class DocResource {
             DocProcessContext context = DocProcessContext.newContext("listPeople", listPeople);
             if ( realSourceType == DocFacadeSource.SOURCE_TYPE_JSON ) {
                 docHelper.getDocProcessConfig().fullProcess("document-json", context.withSourceType( sourceType ), handlerId, baos);
+            } else if ( realSourceType == DocFacadeSource.SOURCE_TYPE_YAML) {
+                docHelper.getDocProcessConfig().fullProcess("document-yaml", context.withSourceType(sourceType), handlerId, baos);
             } else {
                 docHelper.getDocProcessConfig().fullProcess("document", context, handlerId, baos);
             }
