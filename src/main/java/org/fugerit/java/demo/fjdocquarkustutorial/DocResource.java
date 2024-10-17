@@ -34,12 +34,10 @@ public class DocResource {
             List<People> listPeople = Arrays.asList(new People("Luthien", "Tinuviel", "Queen"), new People("Thorin", "Oakshield", "King"));
             // output generation
             DocProcessContext context = DocProcessContext.newContext("listPeople", listPeople);
-            if ( realSourceType == DocFacadeSource.SOURCE_TYPE_JSON ) {
-                docHelper.getDocProcessConfig().fullProcess("document-json", context.withSourceType( sourceType ), handlerId, baos);
-            } else if ( realSourceType == DocFacadeSource.SOURCE_TYPE_YAML) {
-                docHelper.getDocProcessConfig().fullProcess("document-yaml", context.withSourceType(sourceType), handlerId, baos);
-            } else {
-                docHelper.getDocProcessConfig().fullProcess("document", context, handlerId, baos);
+            switch ( realSourceType ) {
+                case DocFacadeSource.SOURCE_TYPE_JSON -> docHelper.getDocProcessConfig().fullProcess("document-json", context.withSourceType( realSourceType ), handlerId, baos);
+                case DocFacadeSource.SOURCE_TYPE_YAML -> docHelper.getDocProcessConfig().fullProcess("document-yaml", context.withSourceType( realSourceType ), handlerId, baos);
+                default -> docHelper.getDocProcessConfig().fullProcess("document", context, handlerId, baos);
             }
             // return the output
             return baos.toByteArray();
@@ -52,7 +50,8 @@ public class DocResource {
 
     @APIResponse(responseCode = "200", description = "The Markdown document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "markdown" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "markdown" )
     @Operation( operationId = "MarkdownExample", summary = "Example Markdown generation",
             description =  "Generates an example Markdown document using Fugerit Venus Doc handler" )
     @GET
@@ -64,7 +63,8 @@ public class DocResource {
 
     @APIResponse(responseCode = "200", description = "The HTML document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "html" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "html" )
     @Operation( operationId = "HTMLExample", summary = "Example HTML generation",
             description =  "Generates an example HTML document using Fugerit Venus Doc handler" )
     @GET
@@ -76,7 +76,8 @@ public class DocResource {
 
     @APIResponse(responseCode = "200", description = "The AsciiDoc document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "asciidoc" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "asciidoc" )
     @Operation( operationId = "AsciiDocExample", summary = "Example AsciiDoc generation",
             description =  "Generates an example AsciiDoc document using Fugerit Venus Doc handler" )
     @GET
@@ -88,7 +89,8 @@ public class DocResource {
 
     @APIResponse(responseCode = "200", description = "The PDF document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "pdf" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "pdf" )
     @Operation( operationId = "PDFExample", summary = "Example PDF generation",
             description =  "Generates an example PDF document using Fugerit Venus Doc handler" )
     @GET
@@ -100,7 +102,8 @@ public class DocResource {
 
     @APIResponse(responseCode = "200", description = "The Excel document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "excel" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "excel" )
     @Operation( operationId = "ExcelExample", summary = "Example Excel generation",
             description =  "Generates an example Excel document using Fugerit Venus Doc handler" )
     @GET
@@ -112,7 +115,8 @@ public class DocResource {
 
     @APIResponse(responseCode = "200", description = "The CSV document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "csv" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "csv" )
     @Operation( operationId = "CSVExample", summary = "Example CSV generation",
             description =  "Generates an example CSV document using Fugerit Venus Doc handler" )
     @GET
@@ -124,7 +128,8 @@ public class DocResource {
 
     @APIResponse(responseCode = "200", description = "The OpenPDF document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "openpdf" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "openpdf" )
     @Operation( operationId = "OpenPDFExample", summary = "Example OpenPDF generation",
             description =  "Generates an example OpenPDF document using Fugerit Venus Doc handler" )
     @GET
@@ -135,7 +140,8 @@ public class DocResource {
     }
     @APIResponse(responseCode = "200", description = "The OpenPDFHTML document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "openpdfhtml" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "openpdfhtml" )
     @Operation( operationId = "OpenPDFHTMLExample", summary = "Example OpenPDFHTML generation",
             description =  "Generates an example OpenPDFHTML document using Fugerit Venus Doc handler" )
     @GET
@@ -146,7 +152,8 @@ public class DocResource {
     }
     @APIResponse(responseCode = "200", description = "The RTF document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "rtf" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "rtf" )
     @Operation( operationId = "RTFExample", summary = "Example RTF generation",
             description =  "Generates an example RTF document using Fugerit Venus Doc handler" )
     @GET
@@ -157,7 +164,8 @@ public class DocResource {
     }
     @APIResponse(responseCode = "200", description = "The PDF document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
-    @Tags( { @Tag( name = "document" ), @Tag( name = "pdf" ) } )
+    @Tag( name = "document" )
+    @Tag( name = "pdf" )
     @Operation( operationId = "PDFA1bExample", summary = "Example PDF/A-1b generation",
             description =  "Generates an example PDF document using Fugerit Venus Doc handler" )
     @GET
