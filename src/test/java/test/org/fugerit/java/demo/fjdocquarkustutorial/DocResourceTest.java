@@ -32,7 +32,7 @@ class DocResourceTest {
     }
     @Test
     void testCsv() {
-        given().when().get("/doc/example.csv").then().statusCode(200);
+        given().when().get("/doc/example.csv?sourceType=9").then().statusCode(200);
     }
     @Test
     void testOpenPDF() {
