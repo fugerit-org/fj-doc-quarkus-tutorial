@@ -47,4 +47,8 @@ class DocResourceTest {
     void testOpenRTF() {
         given().when().get("/doc/example.rtf").then().statusCode(200);
     }
+    @Test
+    void testPdfA1b() {
+        given().when().get("/doc/pdfa1b/example.pdf").then().statusCode(200);
+    }
 }
