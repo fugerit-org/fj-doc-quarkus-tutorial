@@ -74,4 +74,9 @@
         <chainStep stepType="complex" map-atts="listPeople" template-path="${chainId}.ftl"/>
     </docChain>
 
+    <!-- example document chain json -->
+    <docChain id="document-json" parent="shared">
+        <chainStep stepType="complex" map-atts="listPeople" template-path="${chainId}.ftl"/>
+    </docChain>
+
 </freemarker-doc-process-config>
