@@ -1,12 +1,10 @@
 package org.fugerit.java.demo.fjdocquarkustutorial;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.WebApplicationException;
-import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.*;
 import lombok.extern.slf4j.Slf4j;
+import org.fugerit.java.core.util.ObjectUtils;
 import org.fugerit.java.doc.base.config.DocConfig;
+import org.fugerit.java.doc.base.facade.DocFacadeSource;
 import org.fugerit.java.doc.base.process.DocProcessContext;
 
 import java.io.ByteArrayOutputStream;
@@ -18,18 +16,31 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.eclipse.microprofile.openapi.annotations.tags.Tags;
 
+/**
+ * Each path
+ *
+ */
 @Slf4j
 @Path("/doc")
+@Tag( name = "XML SOURCE (DEFAULT)", description = "Add query param sourceType=1 or no value to use the XML source example")
+@Tag( name = "JSON SOURCE", description = "Add query param sourceType=2 to use the JSON source example")
 public class DocResource {
 
-    byte[] processDocument(String handlerId) {
+    byte[] processDocument(String handlerId, Integer sourceType) {
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            int realSourceType = ObjectUtils.objectWithDefault( sourceType, DocFacadeSource.SOURCE_TYPE_DEFAULT );
+            log.info( "using source type : {}", realSourceType );
             // creates the doc helper
             DocHelper docHelper = new DocHelper();
             // create custom data for the fremarker template 'document.ftl'
             List<People> listPeople = Arrays.asList(new People("Luthien", "Tinuviel", "Queen"), new People("Thorin", "Oakshield", "King"));
             // output generation
-            docHelper.getDocProcessConfig().fullProcess("document", DocProcessContext.newContext("listPeople", listPeople), handlerId, baos);
+            DocProcessContext context = DocProcessContext.newContext("listPeople", listPeople);
+            if ( realSourceType == DocFacadeSource.SOURCE_TYPE_JSON ) {
+                docHelper.getDocProcessConfig().fullProcess("document-json", context.withSourceType( sourceType ), handlerId, baos);
+            } else {
+                docHelper.getDocProcessConfig().fullProcess("document", context, handlerId, baos);
+            }
             // return the output
             return baos.toByteArray();
         } catch (Exception e) {
@@ -47,8 +58,8 @@ public class DocResource {
     @GET
     @Produces("text/markdown")
     @Path("/example.md")
-    public byte[] markdownExample() {
-        return processDocument(DocConfig.TYPE_MD);
+    public byte[] markdownExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument(DocConfig.TYPE_MD, sourceType);
     }
 
     @APIResponse(responseCode = "200", description = "The HTML document content" )
@@ -59,8 +70,8 @@ public class DocResource {
     @GET
     @Produces("text/html")
     @Path("/example.html")
-    public byte[] htmlExample() {
-        return processDocument(DocConfig.TYPE_HTML);
+    public byte[] htmlExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument(DocConfig.TYPE_HTML, sourceType);
     }
 
     @APIResponse(responseCode = "200", description = "The AsciiDoc document content" )
@@ -71,8 +82,8 @@ public class DocResource {
     @GET
     @Produces("text/asciidoc")
     @Path("/example.adoc")
-    public byte[] asciidocExample() {
-        return processDocument(DocConfig.TYPE_ADOC);
+    public byte[] asciidocExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument(DocConfig.TYPE_ADOC, sourceType);
     }
 
     @APIResponse(responseCode = "200", description = "The PDF document content" )
@@ -83,8 +94,8 @@ public class DocResource {
     @GET
     @Produces("application/pdf")
     @Path("/example.pdf")
-    public byte[] pdfExample() {
-        return processDocument(DocConfig.TYPE_PDF);
+    public byte[] pdfExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument(DocConfig.TYPE_PDF, sourceType);
     }
 
     @APIResponse(responseCode = "200", description = "The Excel document content" )
@@ -95,8 +106,8 @@ public class DocResource {
     @GET
     @Produces("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     @Path("/example.xlsx")
-    public byte[] excelExample() {
-        return processDocument(DocConfig.TYPE_XLSX);
+    public byte[] excelExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument(DocConfig.TYPE_XLSX, sourceType);
     }
 
     @APIResponse(responseCode = "200", description = "The CSV document content" )
@@ -107,8 +118,8 @@ public class DocResource {
     @GET
     @Produces("text/csv")
     @Path("/example.csv")
-    public byte[] csvExample() {
-        return processDocument(DocConfig.TYPE_CSV);
+    public byte[] csvExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument(DocConfig.TYPE_CSV, sourceType);
     }
 
     @APIResponse(responseCode = "200", description = "The OpenPDF document content" )
@@ -119,8 +130,8 @@ public class DocResource {
     @GET
     @Produces("application/pdf")
     @Path("/openpdf/example.pdf")
-    public byte[] openpdfExample() {
-        return processDocument(DocConfig.TYPE_PDF);
+    public byte[] openpdfExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument(DocConfig.TYPE_PDF, sourceType);
     }
     @APIResponse(responseCode = "200", description = "The OpenPDFHTML document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
@@ -130,8 +141,8 @@ public class DocResource {
     @GET
     @Produces("text/html")
     @Path("/openpdf/example.html")
-    public byte[] openpdfhtmlExample() {
-        return processDocument(DocConfig.TYPE_HTML);
+    public byte[] openpdfhtmlExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument(DocConfig.TYPE_HTML, sourceType);
     }
     @APIResponse(responseCode = "200", description = "The RTF document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
@@ -141,8 +152,8 @@ public class DocResource {
     @GET
     @Produces("application/rtf")
     @Path("/example.rtf")
-    public byte[] rtfExample() {
-        return processDocument(DocConfig.TYPE_RTF);
+    public byte[] rtfExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument(DocConfig.TYPE_RTF, sourceType);
     }
     @APIResponse(responseCode = "200", description = "The PDF document content" )
     @APIResponse(responseCode = "500", description = "In case of an unexpected error" )
@@ -152,8 +163,8 @@ public class DocResource {
     @GET
     @Produces("application/pdf")
     @Path("/pdfa1b/example.pdf")
-    public byte[] pdfA1bExample() {
-        return processDocument("PDF/A-1b");
+    public byte[] pdfA1bExample(@QueryParam("sourceType") Integer sourceType) {
+        return processDocument("PDF/A-1b", sourceType);
     }
 
 }

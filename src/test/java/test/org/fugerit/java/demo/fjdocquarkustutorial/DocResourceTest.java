@@ -29,7 +29,7 @@ class DocResourceTest {
     }
     @Test
     void testXlsx() {
-        given().when().get("/doc/example.xlsx").then().statusCode(200);
+        given().when().get("/doc/example.xlsx?sourceType=2").then().statusCode(200);
     }
     @Test
     void testCsv() {
