@@ -1,5 +1,39 @@
 # fj-doc-quarkus-tutorial
 
+## Creation command
+
+```shell
+mvn org.fugerit.java:fj-doc-maven-plugin:init \
+-DgroupId=org.fugerit.java.demo \
+-DartifactId=fj-doc-quarkus-tutorial \
+-Dflavour=quarkus-3 \
+-Dextensions=base,freemarker,mod-opencsv
+```
+
+1. Build the app
+
+```shell
+git clone https://github.com/fugerit-org/fj-doc
+mvn clean install
+cd fj-doc-native-quarkus
+mvn install -Dnative -Ptest
+```
+
+2. Run the app
+
+```shell
+./target/fj-doc-native-quarkus*-runner
+```
+
+3. Test the app
+
+Open available test paths, for instance :
+
+* <http://localhost:8080/doc/example.md>
+* <http://localhost:8080/doc/example.html>
+* <http://localhost:8080/doc/example.adoc>
+* <http://localhost:8080/doc/example.csv>
+
 ## Quickstart
 
 Requirement :
