@@ -2,14 +2,13 @@ package org.fugerit.java.demo.fjdocquarkustutorial;
 
 import org.fugerit.java.doc.freemarker.process.FreemarkerDocProcessConfig;
 import org.fugerit.java.doc.freemarker.process.FreemarkerDocProcessConfigFacade;
+import jakarta.enterprise.context.ApplicationScoped;
 
-/**
- * DocHelper, version : auto generated on 2024-12-15 01:03:35.618
- */
+@ApplicationScoped
 public class DocHelper {
 
-     private FreemarkerDocProcessConfig docProcessConfig = FreemarkerDocProcessConfigFacade.loadConfigSafe( "cl://fj-doc-quarkus-tutorial/fm-doc-process-config.xml" );
+    private FreemarkerDocProcessConfig docProcessConfig = FreemarkerDocProcessConfigFacade.loadConfigSafe( "cl://fj-doc-quarkus-tutorial/fm-doc-process-config.xml" );
 
-     public FreemarkerDocProcessConfig getDocProcessConfig() { return this.docProcessConfig; }
+    public FreemarkerDocProcessConfig getDocProcessConfig() { return this.docProcessConfig; }
 
 }

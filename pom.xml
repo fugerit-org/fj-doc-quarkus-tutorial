@@ -9,13 +9,13 @@
     <maven.compiler.release>21</maven.compiler.release>
     <surefire-plugin.version>3.3.1</surefire-plugin.version>
     <quarkus-freemarker-version>1.1.0</quarkus-freemarker-version>
-    <quarkus.platform.version>3.16.3</quarkus.platform.version>
+    <quarkus.platform.version>3.17.4</quarkus.platform.version>
     <skipITs>true</skipITs>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <compiler-plugin.version>3.13.0</compiler-plugin.version>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <fj-doc-version>8.11.0</fj-doc-version>
+    <fj-doc-version>8.11.5</fj-doc-version>
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
   </properties>
   <dependencyManagement>
@@ -152,6 +152,26 @@
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
             <maven.home>${maven.home}</maven.home>
           </systemPropertyVariables>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.fugerit.java</groupId>
+        <artifactId>fj-doc-maven-plugin</artifactId>
+        <version>${fj-doc-version}</version>
+        <executions>
+          <execution>
+            <id>freemarker-verify</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <templateBasePath>${project.basedir}/src/main/resources/fj-doc-quarkus-tutorial/template</templateBasePath>
+          <generateReport>true</generateReport>
+          <failOnErrors>true</failOnErrors>
+          <reportOutputFolder>${project.build.directory}/freemarker-syntax-verify-report</reportOutputFolder>
         </configuration>
       </plugin>
     </plugins>

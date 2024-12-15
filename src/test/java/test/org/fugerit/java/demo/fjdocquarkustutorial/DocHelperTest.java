@@ -1,4 +1,4 @@
-// generated from template 'DocHelperTest.ftl' on 2024-12-15T01:03:35.62+01:00
+// generated from template 'DocHelperTest.ftl' on 2024-12-15T00:07:40.307Z
 package test.org.fugerit.java.demo.fjdocquarkustutorial;
 
 import org.fugerit.java.demo.fjdocquarkustutorial.DocHelper;
@@ -6,8 +6,6 @@ import org.fugerit.java.demo.fjdocquarkustutorial.People;
 
 import org.fugerit.java.doc.base.config.DocConfig;
 import org.fugerit.java.doc.base.process.DocProcessContext;
-import org.fugerit.java.doc.base.config.DocOutput;
-import org.fugerit.java.doc.base.config.DocTypeHandler;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -46,10 +44,10 @@ class DocHelperTest {
             
             
             String chainId = "document";
-            // find the handler for the output :
-            DocTypeHandler docTypeHandler = docHelper.getDocProcessConfig().getFacade().findHandler(DocConfig.TYPE_MD);
+            // handler id
+            String handlerId = DocConfig.TYPE_MD;
             // output generation
-            docHelper.getDocProcessConfig().fullProcess( chainId, DocProcessContext.newContext( "listPeople", listPeople ), docTypeHandler, DocOutput.newOutput( baos ) );
+            docHelper.getDocProcessConfig().fullProcess( chainId, DocProcessContext.newContext( "listPeople", listPeople ), handlerId, baos );
             // print the output
             log.info( "html output : \n{}", new String( baos.toByteArray(), StandardCharsets.UTF_8 ) );
             Assertions.assertNotEquals( 0, baos.size() );

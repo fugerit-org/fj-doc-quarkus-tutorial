@@ -1,14 +1,11 @@
 # fj-doc-quarkus-tutorial
 
-Init with command : 
+Init with : 
 
-```shell
-mvn org.fugerit.java:fj-doc-maven-plugin:init \
--DgroupId=org.fugerit.java.demo \
--DartifactId=fj-doc-quarkus-tutorial \
--Dextensions=base,freemarker,mod-fop \
--Dflavour=quarkus-3
-```
+<https://docs.fugerit.org/fj-doc-playground/home>
+
+Flavour : quarkus-3
+Extensions : base,freemarker,mod-fop
 
 ## Quickstart
 
@@ -37,8 +34,8 @@ Test available paths (for instance : [/doc/example.md](http://localhost:8080/doc
 
 NOTE:
 
-* Powered by Quarkus 3.16.3
-* Using Fugerit Venus Doc 8.11.0 (extensions : base,freemarker,mod-fop)
+* Powered by Quarkus 3.17.4
+* Using Fugerit Venus Doc 8.11.5 (extensions : fj-doc-base,fj-doc-freemarker,fj-doc-mod-fop)
 
 ## Native version
 
@@ -68,7 +65,7 @@ This project has been initialized using [fj-doc-maven-plugin init goal](https://
 The quarkus 3 structure is similar to running the quarkus create goal : 
 
 ```shell
-mvn io.quarkus.platform:quarkus-maven-plugin:3.16.3:create \
+mvn io.quarkus.platform:quarkus-maven-plugin:3.17.4:create \
 -DprojectGroupId=org.fugerit.java.demo \
 -DprojectArtifactId=fj-doc-quarkus-tutorial \
 -Dextensions='rest,rest-jackson,config-yaml,smallrye-openapi'
