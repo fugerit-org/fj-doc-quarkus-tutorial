@@ -57,10 +57,17 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
     </dependency>
+    <!--
     <dependency>
       <groupId>io.quarkiverse.freemarker</groupId>
       <artifactId>quarkus-freemarker</artifactId>
       <version>${quarkus-freemarker-version}</version>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>org.graalvm.sdk</groupId>
+      <artifactId>graal-sdk</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>

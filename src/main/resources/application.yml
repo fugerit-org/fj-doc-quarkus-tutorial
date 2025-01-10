@@ -5,4 +5,6 @@ quarkus:
   native:
     # if needed add -H:+UnlockExperimentalVMOptions
     additional-build-args: -H:IncludeResources=fj-doc-quarkus-tutorial/fm-doc-process-config.xml,\
-      -H:IncludeResources=fj-doc-quarkus-tutorial/template/document.ftl
+      -H:IncludeResources=fj-doc-quarkus-tutorial/template/document.ftl,\
+      --initialize-at-run-time=freemarker.ext.jython.JythonWrapper,\
+      --initialize-at-run-time=freemarker.ext.jython.JythonModel
