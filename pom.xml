@@ -14,7 +14,7 @@
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <compiler-plugin.version>3.13.0</compiler-plugin.version>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <fj-doc-version>8.11.9</fj-doc-version>
+    <fj-doc-version>8.11.10-SNAPSHOT</fj-doc-version>
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
   </properties>
   <dependencyManagement>

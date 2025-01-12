@@ -5,4 +5,12 @@ quarkus:
   native:
     # if needed add -H:+UnlockExperimentalVMOptions
     additional-build-args: -H:IncludeResources=fj-doc-quarkus-tutorial/fm-doc-process-config.xml,\
-      -H:IncludeResources=fj-doc-quarkus-tutorial/template/document.ftl
+      -H:IncludeResources=fj-doc-quarkus-tutorial/template/document.ftl,\
+      -H:IncludeResources=fj-doc-quarkus-tutorial/fop-config.xml,\
+      -H:IncludeResources=test.fo,\
+      --trace-object-instantiation=java.lang.Thread,\
+      --initialize-at-run-time=sun.font.SunFontManager,\
+      --initialize-at-run-time=sun.font.PhysicalStrike,\
+      --initialize-at-run-time=sun.font.StrikeCache,\
+      --initialize-at-run-time=sun.java2d.Disposer,\
+      --report-unsupported-elements-at-runtime
