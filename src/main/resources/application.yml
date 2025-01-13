@@ -5,4 +5,12 @@ quarkus:
   native:
     # if needed add -H:+UnlockExperimentalVMOptions
     additional-build-args: -H:IncludeResources=fj-doc-quarkus-tutorial/fm-doc-process-config.xml,\
-      -H:IncludeResources=fj-doc-quarkus-tutorial/template/document.ftl
+      -H:IncludeResources=fj-doc-quarkus-tutorial/template/document.ftl,\
+      --trace-object-instantiation=java.security.SecureRandom,\
+      --trace-object-instantiation=java.lang.Thread,\
+      --trace-object-instantiation=org.apache.poi.util.RandomSingleton,\
+      --initialize-at-run-time=org.apache.poi.util.RandomSingleton,\
+      --initialize-at-run-time=sun.font.SunFontManager,\
+      --initialize-at-run-time=sun.java2d.Disposer,\
+      --initialize-at-run-time=sun.font.PhysicalStrike,\
+      --initialize-at-run-time=sun.font.StrikeCache
